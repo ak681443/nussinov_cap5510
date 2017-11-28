@@ -1,8 +1,12 @@
 import java.util.*;
 
-public class Nussinov {
+public class Nussinov implements NussinovSolver {
 
-    private int[][] calculateDPMatrix(char[] sequence, int[][] dpMatrix, int seqLength) {
+    private int[][] solve(String inpSequence) {
+    	int seqLength = inpSequence.length();
+        int[][] dpMatrix = new int[seqLength][seqLength];
+        char sequence[] = inpSequence.toCharArray();
+
         for (int i = 1; i < seqLength; i++) {
             for (int j = i; j < seqLength; j++) {
             	int n = j-i;
@@ -47,12 +51,11 @@ public class Nussinov {
     public static void main(String args[]) {
     	Nussinov ob = new Nussinov();
         String seq = "GGGAAAUCC";
-        int n = seq.length();
-        int[][] matrix = new int[n][n];
 
-        matrix = ob.calculateDPMatrix(seq.toCharArray(), matrix, n);
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+
+        int matrix[][] = ob.solve(seq);
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
                 System.out.print(matrix[i][j]);
             }
             System.out.println();
