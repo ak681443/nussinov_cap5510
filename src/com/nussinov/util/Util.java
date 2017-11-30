@@ -36,6 +36,18 @@ public class Util {
 		return null;
 	}
 	
+	public static int score(Character base1, Character base2) {
+	    int score = 0;
+	    if (base1.equals('U') && base2.equals('A') || base1.equals('A') && base2.equals('U')) {
+	        score = 1;
+	    } else if (base1.equals('G') && base2.equals('C') || base1.equals('C') && base2.equals('G')) {
+	        score = 1;
+	    } else {
+	        score = 0;
+	    }
+	    return score;
+	}
+	
 	public static void safeClose(Closeable c){
 		try{
 			c.close();
