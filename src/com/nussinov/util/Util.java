@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Util {
@@ -102,5 +103,19 @@ public class Util {
 		}catch(Exception e){
 			if(isDebug) e.printStackTrace();
 		}
+	}
+	
+	private static HashMap<Integer, Object> memoryPool = new HashMap<>();
+	
+	public static int[][] allocateMemory(int N){
+		int [][] buffer = (int[][]) memoryPool.get(N);
+		if(buffer == null){
+			buffer = new int[N][N];
+			memoryPool.put(N, buffer);
+		} else {
+			for (int[] row: buffer)
+			  Arrays.fill(row, 0);
+		}
+		return buffer;
 	}
 }

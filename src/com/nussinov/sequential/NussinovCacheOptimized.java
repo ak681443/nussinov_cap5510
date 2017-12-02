@@ -9,7 +9,7 @@ public class NussinovCacheOptimized implements NussinovSolver {
 	public int[][] solve(RNA seq) {
 		char[] sequence = seq.getSequence().toCharArray();
 		int seqLength = seq.getSequence().length();
-		int[][] matrix = new int[seqLength][seqLength];
+		int[][] matrix = Util.allocateMemory(seqLength);
 		
 		for (int i = 2; i < seqLength; i++) {
 			for (int j = i; j < seqLength; j++) {

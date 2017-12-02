@@ -10,7 +10,7 @@ public class Nussinov implements NussinovSolver {
     public int[][] solve(RNA rnaSequence) {
 		String inpSequence = rnaSequence.getSequence();
     	int seqLength = inpSequence.length();
-        int[][] dpMatrix = new int[seqLength][seqLength];
+        int[][] dpMatrix = Util.allocateMemory(seqLength);
         char sequence[] = inpSequence.toCharArray();
 
         for (int i = 2; i < seqLength; i++) {
